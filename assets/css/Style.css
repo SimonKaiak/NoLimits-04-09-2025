@@ -1,0 +1,320 @@
+:root{
+  --magenta:#ff4dec;
+  --violet:#7b5cff;
+  --cyan:#00e7ff;
+  --blue:#021d96f2;
+  --white:#e9efff;
+}
+/* ------------------------------------------------------------------------------------------- */
+
+/* ===== Brand ===== */
+#brand{
+  display:inline-block;
+  line-height:1;
+  text-decoration:none;
+  user-select:none;
+  font-size:clamp(1rem,6vw,4rem);
+  background:linear-gradient(90deg,#ff4dec,#00e7ff,#7b5cff);
+  background-size:300% 100%;
+  -webkit-background-clip:text;
+  color:transparent;
+  -webkit-text-stroke:3px blueviolet;
+  text-shadow:
+    0 0 4px #6ff1ff,
+    0 0 14px rgb(102, 186, 255),
+    0 0 28px rgba(0,231,255,.55),
+    0 0 46px rgba(123,92,255,.45);
+  animation:nl-pulse 5s ease-in-out infinite, nl-sheen 8s linear infinite;
+  position:absolute;
+  left:50%;
+  top: 45%;
+  transform: translate(-50%,-50%);
+  margin: 0;                        /* evita desplazamientos */
+  font-weight: 700;                                                                             /*  BRAND -> NoLimits */
+}
+#brand:hover{ -webkit-text-stroke-color:blueviolet; }
+
+/* ===== Sub-brand (nav inferior, versión suave) ===== */
+#sub-brand{
+  display:inline-block;
+  line-height:1;
+  text-decoration:none;
+  user-select:none;
+  font-size:clamp(0.8rem,4vw,2rem); /* más chico que #brand */
+  background:linear-gradient(90deg,#ff4dec,#00e7ff,#7b5cff);
+  background-size:300% 100%;
+  -webkit-background-clip:text;
+  color:transparent;
+  -webkit-text-stroke:1.5px #a366ff;  /* más claro y fino */
+  text-shadow:
+    0 0 2px rgba(111,241,255,.4),
+    0 0 6px rgba(123,92,255,.25);     /* sombra mucho más tenue */
+  animation:nl-sheen 8s linear infinite; /* solo brillo de barrido */
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+  margin:0;
+  font-weight:500;
+}
+#sub-brand:hover{ -webkit-text-stroke-color:#c28cff; }
+/* ------------------------------------------------------------------------------------------- */
+
+@keyframes nl-pulse{ 0%,100%{filter:brightness(1);} 50%{filter:brightness(1.25);} }
+@keyframes nl-sheen{ 0%{background-position:-200% 0;} 100%{background-position:200% 0;} }
+
+/* ===== Fondo ===== */
+body{
+  margin:0;
+  min-height:100vh;
+  display:grid;                 /* centrado fácil y sólido */
+  place-items:center;           /* centra X e Y */
+  padding:110px 16px 70px;      /* top = nav sup (110px), bottom = nav inf (70px) */
+  background:none;
+}
+body::before{
+  content:""; position:fixed; inset:0; z-index:-1;
+  background:
+    linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.35)),
+    url("../img/fondo1.jpg") no-repeat center center/cover;
+}
+
+/* ------------------------------------------------------------------------------------------- */
+/* ===== Navbar (superior) ===== */
+.nl-nav{
+  position:fixed; top:0; left:0; width:100%; height:110px; z-index:1000;
+  background:rgba(0,0,0,.35);
+  backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+  border-bottom:1px solid rgba(255,255,255,.1);
+  box-shadow:0 6px 18px rgba(0,0,0,.2);
+}
+/* Línea neón inferior del nav */
+.nl-nav::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:0;
+  height:1.5px;                       /* grosor de la línea */
+  pointer-events:none;
+  background:linear-gradient(90deg,var(--magenta),var(--cyan),var(--violet));              /*   Nav Superior*/
+  background-size:200% 100%;
+  animation:navline-move 8s linear infinite;
+  box-shadow:
+    0 0 10px rgba(255,77,236,.55),
+    0 0 14px rgba(0,231,255,.45),
+    0 0 18px rgba(123,92,255,.45);
+}
+/*  Movimiento de Nav*/
+@keyframes navline-move{
+  0%   { background-position:0% 0; }
+  100% { background-position:200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .nl-nav::after{ animation:none; }
+}
+
+/* ------------------------------------------------------------------------------------------- */
+
+/* ===== Navbar (inferior) ===== */
+.nl-nav1{
+  position:fixed; bottom:0; left:0; width:100%; height:70px; z-index:1000;
+  background:rgba(0,0,0,.35);
+  backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+  border-top:1px solid rgba(255,255,255,.1);   /* borde arriba */
+  box-shadow:0 -6px 18px rgba(0,0,0,.2);       /* sombra hacia arriba */
+}
+
+/* Línea neón superior del nav1 */
+.nl-nav1::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; top:0;   /* arriba, no abajo */
+  height:1.5px;             /* grosor de la línea */
+  pointer-events:none;
+  background:linear-gradient(90deg,var(--violet),var(--cyan),var(--magenta));
+  background-size:200% 100%;
+  animation:navline-move-right 8s linear infinite;
+  box-shadow:
+    0 0 10px rgba(255,77,236,.55),
+    0 0 14px rgba(0,231,255,.45),
+    0 0 18px rgba(123,92,255,.45);
+}
+
+.nl-nav1-inner{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center;             /*  Nav Inferior */
+  padding:12px 20px; gap:16px;
+}
+
+/* Movimiento contrario (derecha → izquierda) */
+@keyframes navline-move-right{
+  0%   { background-position:200% 0; }
+  100% { background-position:0% 0; }
+}
+
+/* Contenedor interno del nav */
+.nl-nav-inner{
+  position: relative;               /* permite centrar absoluto el brand */
+  display: flex;
+  justify-content: space-between;   /* Salir a la izq., botones a la der. */
+  align-items: center;              /* centrado vertical */
+  padding: 0 20px;
+  height: 100%;
+}
+/* Grupo de botones a la derecha */
+.nl-right{
+  display: flex;
+  align-items: center;   /* centra los botones verticalmente */
+  gap: 12px;
+  margin-top: 0;         /* elimina el empuje hacia abajo */
+}
+
+/* ------------------------------------------------------------------------------------------- */
+
+/* ===== Botones ===== */
+button{
+  display:inline-block; padding:10px 16px; font-size:16px; cursor:pointer;
+  border-radius:10px; border:2px solid purple;
+  transition:background-color .25s, color .25s, border-color .25s, box-shadow .25s;
+}
+
+.btn_salir{
+  background:#000000; color: rgb(161, 67, 248);
+  border: 2px double rgb(161, 67, 248); margin-top:7px; font-weight:500;
+}
+.btn_salir, .btn_in, .btn_reg{ margin-top: 0; }
+.btn_salir:hover{
+  background:#000000; color:#ffffff;
+  box-shadow:
+    0 0 22px rgba(255,42,191,.55),
+    0 0 28px rgba(123,92,255,.45),
+    0 0 34px rgba(0,231,255,.40);
+}
+
+.btn_in{
+  background:#000000; color:#00e7ff;
+  border:2px double #00e7ff; margin-right:7px; font-weight:500;
+}
+.btn_in:hover{
+  background:#000000; color:#ffffff;
+  box-shadow:
+    0 0 22px rgba(255,42,191,.55),
+    0 0 28px rgba(123,92,255,.45),
+    0 0 34px rgba(0,231,255,.40);
+}
+
+.btn_reg{
+  background:#000000; color:#ff4dec;
+  border:2px double #ff4dec; font-weight:500;
+}
+.btn_reg:hover{
+  background:#000000; color:#ffffff;
+  box-shadow:
+    0 0 22px rgba(255,42,191,.55),
+    0 0 28px rgba(123,92,255,.45),
+    0 0 34px rgba(0,231,255,.40);
+}
+
+/* ===== Contenedor de página ===== */
+.main-container{
+  margin-top:120px; width:100%;
+  display:flex; justify-content:center; align-items:center; flex:1;
+}
+
+/* ------------------------------------------------------------------------------------------- */
+
+/* ===== Carrusel (glass + sombreado exterior) ===== */
+.nl-carousel{
+  --h: clamp(320px, 60vh, 640px);
+  --g1:#ff2abf; --g2:#7b5cff; --g3:#18e3ff;
+  --pad:3px;
+  --glow1: rgba(255,42,191,.45);
+  --glow2: rgba(24,227,255,.40);
+
+  position:relative;
+  max-width:1100px;
+  width:100%;
+  border-radius:16px;
+  overflow:hidden;
+  margin: 0 auto;
+
+  background: rgba(10,12,24,.16);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 0 14px rgba(255,42,191,.35),
+    0 0 18px rgba(123,92,255,.30),
+    0 0 22px rgba(0,231,255,.25);
+  transition: box-shadow .3s ease;
+}
+.nl-carousel:hover{
+  box-shadow:
+    0 0 22px rgba(255,42,191,.55),
+    0 0 28px rgba(123,92,255,.45),
+    0 0 34px rgba(0,231,255,.40);
+}
+
+/* Capa de vidrio/degradado */
+.nl-carousel::after{
+  content:"";
+  position:absolute; inset:0; z-index:15; pointer-events:none;
+  background:
+    radial-gradient(120% 100% at 50% 120%, rgba(0,231,255,.08) 0%, rgba(0,0,0,0) 60%),
+    linear-gradient(135deg, rgba(8,10,26,.22), rgba(8,10,26,.08));
+}
+
+/* Propagar alto */
+.nl-carousel .carousel,
+.nl-carousel .carousel-inner,
+.nl-carousel .carousel-item{
+  height:var(--h);
+  background: transparent;
+}
+
+/* Imagen atenuada */
+.nl-carousel .carousel-item img{
+  display:block; width:100%; height:100%;
+  object-fit:cover; object-position:center;
+  opacity:.25; filter:saturate(90%) blur(.4px);
+  transform:scale(1.01);
+}
+
+/* Controles */
+.carousel-control-prev,
+.carousel-control-next{
+  z-index:30; background: transparent; box-shadow:none;
+}
+
+/* ===== Borde neón del carrusel ===== */
+.nl-carousel::before{
+  content:""; position:absolute; inset:0; border-radius:inherit;
+  pointer-events:none; z-index:20; padding:var(--pad);
+  background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  filter: drop-shadow(0 0 6px var(--glow1)) drop-shadow(0 0 8px var(--glow2));
+  transition: filter .28s ease;
+}
+.nl-carousel:hover::before{
+  filter: drop-shadow(0 0 10px var(--glow1)) drop-shadow(0 0 12px var(--glow2));
+  background: linear-gradient(90deg, var(--g3), var(--g2), var(--g1));                      /*    Invierte colores de border */
+
+}
+
+/* ------------------------------------------------------------------------------------------- */
+
+/* ===== Inputs ===== */
+input{
+  border:2px solid lightpink; border-radius:10px; padding:5px; width:200px;
+  font:16px Arial, Helvetica, sans-serif; margin-bottom:10px;
+  background:whitesmoke; color:#000;
+}
+input::placeholder{ color:gray; font-style:italic; opacity:.7; }
+input:focus{ border-color:purple; outline:none; box-shadow:0 0 5px rgba(128,0,128,.5); }
+
+/* ===== Responsive ===== */
+@media (max-width:768px){
+  .nl-nav-inner{ padding:10px 12px; }
+  #brand{ font-size:clamp(1.8rem,8vw,3rem); }
+  .nl-carousel{ --h: 360px; }
+}

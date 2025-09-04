@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NoLimits</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- CSS propio -->
+  <link rel="stylesheet" href="../assets/css/Style.css"/>
+</head>
+<body>
+
+  <!-- NAVBAR fijo, con marca al centro y botones a la derecha -->
+  <nav class="nl-nav">
+    <div class="nl-nav-inner">
+      <div class="nl-left">
+        <button class="btn_salir" onclick="window.close()">Salir</button>
+      </div>
+
+      <!-- Marca centrada -->
+      <h1 id="brand" href="#">°-._ NoLimits _.-°</h1>
+
+      <!-- Botones a la derecha -->
+      <div class="nl-right">
+        <button class="btn_in"  onclick="location.href='../html/inicioSesion.html'">Inicio de sesión</button>
+        <button class="btn_reg" onclick="location.href='../html/registro.html'">Registro</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Carrusel Bootstrap -->
+  <div id="carouselExampleAutoplaying" class="carousel slide nl-carousel" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../assets/img/slide1.jpeg" class="d-block w-100" alt="viernes 13">
+      </div>
+      <div class="carousel-item">
+        <img src="../assets/img/slide2.jpg" class="d-block w-100" alt="It">
+      </div>
+      <div class="carousel-item">
+        <img src="../assets/img/slide3.png" class="d-block w-100" alt="scream">
+      </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Siguiente</span>
+    </button>
+  </div>
+
+  <nav class="nl-nav1">
+    <div class="n1-left">
+        <p id="sub-brand">_.-°-._ All in One _.-°-._</p>
+    </div>
+  </nav>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JS propio -->
+  <script src="../assets/js/NoLimits.js"></script>
+</body>
+</html>

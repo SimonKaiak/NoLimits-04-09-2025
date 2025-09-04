@@ -1,0 +1,188 @@
+:root {
+    --clr-dark-900: #1c1109;
+    --clr-dark-800: #815839;
+    --clr-dark-700: #422a19;
+    --clr-primary: #ff6b00;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+img {
+    max-width: 100%;
+}
+
+body{
+    min-height: 100dvh;
+    background-color: aliceblue;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+section{
+    width: 100%;
+    max-width: 500px;
+    background-image: url("https://t4.ftcdn.net/jpg/02/17/04/17/360_F_217041780_DN1mEPT4BVn3WUvTYATf3Udh3or2rIyv.jpg");
+    background-size: cover;
+    background-position: center;
+    border-radius: 0.5rem;
+    color: white;
+}
+
+
+header{
+    height: 300px;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer{
+    padding: 1rem;
+}
+footer input,
+footer button{
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: none;
+    font-size: 1.5rem;
+    color: white;
+    border-radius: 0.5vmin;
+    margin-top: 0.5rem;
+}
+
+footer input{
+    color: black;
+}
+footer input::placeholder{
+    color: black;
+}
+footer button{
+    background: linear-gradient(90deg, #00f7ff, #a020f0, #ff1493);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 0.5vmin;
+    padding: 0.75rem 1rem;
+    font-size: 1.2rem;
+    transition: all 0.4s ease-in-out;
+}
+
+footer button:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #00f7ff, 0 0 30px #a020f0, 0 0 45px #ff1493;
+}
+
+.image-container{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: black;
+    border: 5px solid #986844;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    animation: neon-border 3s linear infinite;
+    transition: all 0.5s ease-in-out;
+}
+
+.image-container:hover{
+    animation: neon-border-reverse 6s linear infinite;
+}
+
+.forgot-password{
+    display: block;     /*Para que quede debajo del input */
+    margin: 0.5rem 0 1rem; /*Espaciado arriba y abajo */
+    font-size: 0.9rem;
+    color: #00f7ff;
+    text-decoration: none; /*/Sin subrayado/ */
+    transition: color 0.3s ease;
+}
+
+.forgot-password:hover{
+    color: #ff1493;
+    text-decoration: underline;
+}
+
+@keyframes neon-border {
+    0%{
+        border-color: #00f7ff;
+        box-shadow: 0 0 10px #00f7ff, 0 0 20px #00f7ff, 0 0 40px #00f7ff;
+    }
+    33%{
+        border-color: #a020f0;
+        box-shadow: 0 0 10px #a020f0, 0 0 20px #a020f0, 0 0 40px #a020f0;
+    }
+    66%{
+        border-color: #ff1493;
+        box-shadow: 0 0 10px #ff1493, 0 0 20px #ff1493, 0 0 40px #ff1493;
+    }
+    100%{
+        border-color: #00f7ff;
+        box-shadow: 0 0 10px #00f7ff, 0 0 20px #00f7ff, 0 0 40px #00f7ff;
+    }
+}
+
+@keyframes neon-border-reverse {
+    0%{
+        border-color: #00f7ff;
+        box-shadow: 0 0 10px #00f7ff,0 0 20px #00f7ff,0 0 40px #00f7ff;
+    }
+    33%{
+        border-color: #ff1493;
+        box-shadow: 0 0 10px #ff1493,0 0 20px #ff1493,0 0 40px #ff1493;
+    }
+    66%{
+        border-color: #a020f0;
+        box-shadow:  0 10px #a020f0,0 0 20px #a020f0,0 0 40px #a020f0;
+    }
+    100%{
+        border-color: #00f7ff;
+        box-shadow: 0 0 10px #00f7ff,0 0 20px #00f7ff,0 0 40px #00f7ff;
+    }
+}
+
+@keyframes backflip {
+    0% { transform: rotateX(0deg); }
+    50% { transform: rotateX(180deg); }
+    100% { transform: rotateX(360deg);}
+}
+
+.backflip {
+    animation: backflip 1s ease-in-out forwards;
+}
+
+.image-container .image{
+    position: absolute;
+    width: 350px;
+    height: 255px;
+    bottom: 0%;
+    animation: avatar 5s ease-in-out infinite;
+    transition: 500ms;
+    background-color: black;
+    overflow: hidden;
+    margin-left: -50px;
+    
+}
+
+@keyframes avatar {
+    0%,
+    50%,
+    100% {
+        transform: rotate(0deg) translateY(0px) scale(1.05);
+    }
+    25% {
+        transform: rotate(5deg) translateY(5px) scale(1);
+    }
+    75% {
+        transform: rotate(-5deg) translateY(5px) scale(1);
+    }
+}
