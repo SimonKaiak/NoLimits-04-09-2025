@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transferencia Bancaria</title>
+    <link rel="stylesheet" href="../assets/css/metodoPago.css">
+    </head>
+    
+    <body>
+
+    <div class="payment-method" id="bank-transfer-method">
+        <h2>Transferencia Bancaria</h2>
+        <h2>NoLimits</h2>
+
+        <div class="payment-details">
+        <p>Realiza una transferencia con los siguientes datos:</p>
+
+        <div class="bank-details">
+            <p><strong>Titular:</strong> NoLimits SPA</p>
+            <p><strong>Banco:</strong> Scotiabank</p>
+            <p><strong>Tipo de cuenta:</strong> Corriente</p>
+            <p><strong>N° de cuenta </strong> 1-00-1654-6698</p>
+            <p><strong>Rut Titular:</strong> 77.569.2356-5</p>
+            <p><strong>Correo:</strong> nolimits@nlspa.cl</p>
+        </div>
+
+        <button class="copy-btn" id="copyBankDetails">Copiar datos bancarios</button>
+
+        <div class="form-group">
+            <label for="total-transferir">Total a transferir</label>
+            <input id="total-transferir" type="text" readonly>
+
+        <script>
+            //espera a que toda la pagina cargue antes de ejecutar el codigo
+            document.addEventListener("DOMContentLoaded", () => {
+                const total = localStorage.getItem('totalCompra');
+                if (total) {
+                    document.getElementById('total-transferir').value = `$${parseInt(total).toLocaleString()}`;
+                }
+            });
+        </script>
+        </div>
+
+        <p style="font-size: 14px; color: #aaa; margin-top: 15px;">
+            Una vez realizada la transferencia, envíanos el comprobante de pago al correo 
+            "nolimits@nlspa.cl" para procesar tu pedido más rápido.
+        </p>
+        </div>
+
+        <button class="btn" id="confirmBankTransfer">He realizado la transferencia</button>
+    </div>
+
+    <script src="../assets/js/metodoPago.js"></script>
+</body>
+</html>

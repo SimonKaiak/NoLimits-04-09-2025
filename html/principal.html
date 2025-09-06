@@ -1,64 +1,234 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NoLimits</title>
-    <link rel="stylesheet" href="../assets/css/principal.css">
+    
     <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
-    rel="stylesheet" integrity="sha384-
-    QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALE
-    wIH" crossorigin="anonymous">
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-
+        QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALE
+        wIH" crossorigin="anonymous">
 </head>
 <body>
-    <h1></h1>
+    <!-- Navbar -->
+    <!-- Queria hacer que este menu se moviera al mover la pagina pero me gano el sueño me avisan si lo hacen o no -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-<div class="container-fluid">
-    <a class="navbar-brand" href="#">NoLimits</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Nosotros</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Categorías
-        </a>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Películas</a></li>
-            <li><a class="dropdown-item" href="#">Series
-            </a></li>
-            <li><a class="dropdown-item" href="#">Accesorios
-            </a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Extras</a></li>
-        </ul>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
-    </ul>
-    <form class="search-box" role="search">
-        <input type="text" placeholder="Buscar..."/>
-        <span class="icon">🔍</span>
-    </form>
-    <button class="btn btn-outline-danger" onclick="location.href='../Index.html'">Cerrar sesión</button>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">NoLimits</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="#">Nosotros</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Categorías
+                        </a>
+                        <!--Esto de aca son las opciones del menu despegable-->
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#peliculas">Películas</a></li>
+                            <li><a class="dropdown-item" href="#videojuegos">Videojuegos</a></li>
+                            <li><a class="dropdown-item" href="#accesorios">Accesorios</a></li>
+                        </ul>
+
+                </ul>
+                <form class="search-box" role="search">
+                    <input type="text" placeholder="Buscar..."/>
+                    <span class="icon">🔍</span>
+                </form>
+                <button class="btn btn-outline-danger" onclick="location.href='../Index.html'">Cerrar sesión</button>
+                <button class="carrito-btn" onclick="abrirCarrito()">🛒 <span id="contador">0</span></button>
+            </div>
+        </div>
+    </nav>
+    <div class="prin-sub"><br><br>
+        <h2>Productos Destacados</h2>
     </div>
-</nav>
-</body>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    <div class="productos-container d-flex flex-column align-item-center">
+    <!-- Los productos que estan en la pagina principal, pelicula/videojuegos/accesorios-->
+    <!-- Película -->
+    <div id="peliculas" class="producto card p-2 m-2 peliculas" style="width:50rem;">
+        <img src="https://via.placeholder.com/150" class="card-img-top" alt="">
+        <div class="card-body">
+            <h5 class="card-title">Spiderman</h5>
+            <img src="../assets/img/spider1.jpg" alt=""><br>
+            
+            <!-- Botón collapse para que baje la información adicional -->
+            <button class="btn btn-info mb-3" data-bs-toggle="collapse" data-bs-target="#info-pelicula1">
+                Descripción película
+                
+            </button>
+            <p class="card-text">$2.000</p>
+            <button class="btn btn-success" onclick="agregarAlCarrito('Película ', 2000)">
+                Agregar
+            </button>
+            <div id="mensaje-carrito" class="alert alert-success position-fixed top-0 start-50 translate-middle-x mt-3 d-none"
+                role="alert" style="z-index: 9999;"> ✅ Producto agregado al carrito
+            
+            </div>
+            <div class="collapse" id="info-pelicula1">
+                <div class="card card-body">
+                    <img src="../assets/img/pider2.jpg" alt="" >
+                    La primera película de Spider-Man sigue al tímido adolescente Peter Parker,
+                    quien obtiene poderes arácnidos tras ser mordido por una araña genéticamente modificada.
+                    Tras la muerte de su Tío Ben, quien le enseña una importante lección,
+                    Peter decide usar sus habilidades para combatir el crimen como el Hombre Araña,
+                    enfrentándose al Duende Verde (Norman Osborn) mientras lucha con su vida cotidiana y su amor por Mary Jane.
+                </div>
+            </div>
+            <!-- aca agrego una categoria interna solo para pelicula para que solo dentro de ella se puedan ver las demas categorias-->
+            <!-- puedes dejarla asi o sacarla ya que las demas tienen la misma informacion o sacar las otras secciones -->
+            <!-- hay que arreglar el scrip de esta seccion con las secciones individuales ya que al tocar "mas informacion se abren las dos secciones"-->
+    
+            <!-- agrego Videojuego dentro de la seccion pelicula-->
+    <div class="producto card p-2 m-2 videojuegos" style="width: 45rem;">
+        <img src="https://via.placeholder.com/150" class="card-img-top" alt="">
+        <div class="card-body">
+            <h5 class="card-title">Videojuego</h5>
+            <p class="card-text">$1.000</p>
+            <!-- Botón collapse para información adicional -->
+            <button class="btn btn-info mb-3" data-bs-toggle="collapse" data-bs-target="#info-videoJuego">
+                Más información
+                
+            </button>
+            <div class="collapse" id="info-videoJuego">
+                <div class="card card-body">
+                    <img src="../assets/img/SpiderJuego.webp" alt="" style="width: 30rem;">
+                    Spider-Man (también conocido como Spider-Man: The Movie Game),
+                    es un videojuego de acción basado en Spider-Man, personaje de Marvel Comics
+                    y está directamente basado en el primer largometraje estelarizado por el epónimo personaje.
+                    Fue desarrollado por Treyarch y realizado en 2002 para PC y varias consolas de videojuegos.
+                    Gran videojuego aqui muahahaha
+                </div>
+            </div>
+            <!-- Botón de agregar al carrito -->
+            <button class="btn btn-success" onclick="agregarAlCarrito('Videojuego', 1000)">
+                Agregar
+            </button>
+            
+        </div>
+    </div>
+
+    <!-- tambien se agrega Accesorios dentro de la seccion pelicula-->
+            <div class="producto card p-2 m-2 accesorios" style="width: 45rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Accesorios</h5>
+                    
+                    <p class="card-text">$12.000</p>
+                    <!-- Botón collapse para información adicional -->
+                    <button class="btn btn-info mb-3" data-bs-toggle="collapse" data-bs-target="#info-accesorio">
+                        Más información
+                        
+                    </button>
+                    <div class="collapse" id="info-accesorio">
+                        <div class="card card-body">
+                            <img src="../assets/img/spiderAc1.jpg" alt="" style="width: 30rem;">
+                            Set de baño infantil Spiderman / Jay Franco
+                            Incluye un dispensador de jabón y un vaso con diseño de Spiderman.
+                            Hecho de plástico resistente, ideal para niños. Es fácil de usar,
+                            recargable y perfecto para el baño o como organizador.
+                            Gran opción como regalo para fanáticos de Marvel.
+                        </div>
+                    </div>
+                    <!-- Botón de agregar al carrito -->
+                    <button class="btn btn-success" onclick="agregarAlCarrito('Accesorio', 12000)">
+                        Agregar
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ACA YA COMIENZAN LAS SECCIONES INDIVIDUALES-->
+
+
+    <!-- VideoJuego con su acceso indivudual-->
+    <div id="videojuegos" class="producto card p-2 m-2 videojuegos" style="width: 50rem;">
+        <img src="https://via.placeholder.com/150" class="card-img-top" alt="">
+        <div class="card-body">
+            <h5 class="card-title">Videojuego</h5>
+            <img src="../assets/img/SpiderJuego.webp" alt="" style="width: 30rem;">
+            <p class="card-text">$1.000</p>
+            <!-- Botón collapse para información adicional -->
+            <button class="btn btn-info mb-3" data-bs-toggle="collapse" data-bs-target="#info-videoJuego">
+                Más información
+                
+            </button>
+            <div class="collapse" id="info-videoJuego">
+                <div class="card card-body">
+                    Spider-Man (también conocido como Spider-Man: The Movie Game),
+                    es un videojuego de acción basado en Spider-Man, personaje de Marvel Comics
+                    y está directamente basado en el primer largometraje estelarizado por el epónimo personaje.
+                    Fue desarrollado por Treyarch y realizado en 2002 para PC y varias consolas de videojuegos.
+                </div>
+            </div>
+            <!-- Botón de agregar al carrito -->
+            <button class="btn btn-success" onclick="agregarAlCarrito('Videojuego', 1000)">
+                Agregar
+            </button>
+        </div>
+    </div>
+
+    <!-- Accesorios con su acceso individual-->
+    <div id="accesorios" class="producto card p-2 m-2 accesorios" style="width: 50rem;">
+        <div class="card-body">
+            <h5 class="card-title">Accesorios</h5>
+            <img src="../assets/img/spiderAc1.jpg" alt="" style="width: 30rem;">
+            <p class="card-text">$12.000</p>
+            <!-- Botón collapse para información adicional -->
+            <button class="btn btn-info mb-3" data-bs-toggle="collapse" data-bs-target="#info-accesorio">
+                Más información
+                
+            </button>
+            <div class="collapse" id="info-accesorio">
+                <div class="card card-body">
+                    Set de baño infantil Spiderman / Jay Franco
+                    Incluye un dispensador de jabón y un vaso con diseño de Spiderman.
+                    Hecho de plástico resistente, ideal para niños. Es fácil de usar,
+                    recargable y perfecto para el baño o como organizador.
+                    Gran opción como regalo para fanáticos de Marvel.
+                </div>
+            </div>
+            <!-- Botón de agregar al carrito -->
+            <button class="btn btn-success" onclick="agregarAlCarrito('Accesorio', 12000)">
+                Agregar
+            </button>
+        </div>
+    </div>
+        <!-- fin de las categorias, como ven en todas se puededn ir agregando mas cosas dentro de si mismas -->
+    </div>
+    </div>
+    <!-- Modelo del carrito -->
+    <div class="fondo-carrito" id="modeloCarrito" class="modelo">
+        <div class="modelo-contenido animar">
+            <h2>Tu Carrito</h2>
+            <ul id="carrito"></ul>
+            <h3>Total: $<span id="total">0</span></h3>
+            <button class="btn-comprar" onclick="location.href='../html/metodoPago.html'">Finalizar compra
+
+            </button>
+            <button class="btn-cerrar" onclick="cerrarCarrito()">Cerrar</button>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
     crossorigin="anonymous"></script>
 
     <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
     crossorigin="anonymous"></script>
+    
     <script src="../assets/js/principal.js"> </script>
+    <!-- si quiero que funcione bien el css tengo que colocarlo aca abajo -->
+    <link rel="stylesheet" href="../assets/css/principal.css">
+</body>
 </html>

@@ -16,17 +16,13 @@
   <!-- NAVBAR fijo, con marca al centro y botones a la derecha -->
   <nav class="nl-nav">
     <div class="nl-nav-inner">
-      <div class="nl-left">
-        <button class="btn_salir" onclick="window.close()">Salir</button>
-      </div>
-
       <!-- Marca centrada -->
-      <h1 id="brand" href="#">°-._ NoLimits _.-°</h1>
+      <h1 id="brand">°-._ NoLimits _.-°</h1>
 
       <!-- Botones a la derecha -->
       <div class="nl-right">
-        <button class="btn_in"  onclick="location.href='../html/inicioSesion.html'">Inicio de sesión</button>
-        <button class="btn_reg" onclick="location.href='../html/registro.html'">Registro</button>
+        <button class="btn_in"  onclick="location.href='../html/inicioSesion.html'">- Inicio de sesión- </button>
+        <button class="btn_reg" onclick="location.href='../html/registro.html'">- Registro -</button>
       </div>
     </div>
   </nav>
@@ -34,14 +30,55 @@
   <!-- Carrusel Bootstrap -->
   <div id="carouselExampleAutoplaying" class="carousel slide nl-carousel" data-bs-ride="carousel">
     <div class="carousel-inner">
+
+      <!-- SLIDE 1 con "Quiénes somos" superpuesto -->
       <div class="carousel-item active">
-        <img src="../assets/img/slide1.jpeg" class="d-block w-100" alt="viernes 13">
+        <img src="../assets/img/slide2.jpg" class="d-block w-100" alt="viernes 13">
+
+        <!-- Contenido superpuesto -->
+        <div class="nl-slide-caption">
+          <div>
+            <h2 class="titulo-carrusel">¿Quiénes somos?</h2>
+            <p class="nosotros-texto">
+              <strong>
+                Somos NoLimits, una plataforma All in One diseñada para ofrecerte
+                entretenimiento sin límites: películas, videojuegos, accesorios y mucho más!
+              </strong>
+            </p>
+          </div>
+        </div>
       </div>
+
+      <!-- SLIDE 2: Sucursales (Próximamente) -->
       <div class="carousel-item">
         <img src="../assets/img/slide2.jpg" class="d-block w-100" alt="It">
+
+        <!-- Contenido superpuesto -->
+        <div class="nl-slide-caption">
+          <div>
+            <h2 class="titulo-carrusel">Sucursales</h2>
+            <p class="nosotros-texto1"><strong>Actualmente no contamos con sucursales físicas.<br>
+            ¡Próximamente abriremos las primeras para estar más cerca de ti!</strong></p>
+          </div>
+        </div>
       </div>
+
+      <!-- SLIDE 3 con soporte -->
       <div class="carousel-item">
-        <img src="../assets/img/slide3.png" class="d-block w-100" alt="scream">
+        <img src="../assets/img/slide2.jpg" class="d-block w-100" alt="scream">
+
+        <!-- Contenido superpuesto -->
+        <div class="nl-slide-caption">
+          <div>
+            <h2 class="titulo-carrusel">Soporte</h2>
+            <p class="soporte-texto">
+              <strong>
+                ¿Tienes dudas o problemas?
+              </strong> <br>
+
+              <strong>Escríbenos al correo: </strong><strong>NoLimitsCorp@gmail.com</strong>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -55,11 +92,14 @@
     </button>
   </div>
 
-  <nav class="nl-nav1">
-    <div class="n1-left">
+  <!-- NAVBAR inferior -->
+   <footer>
+    <nav class="nl-nav1">
+      <div class="n1-left">
         <p id="sub-brand">_.-°-._ All in One _.-°-._</p>
-    </div>
-  </nav>
+      </div>
+    </nav>
+  </footer>
 
   <!-- Bootstrap JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

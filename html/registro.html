@@ -1,29 +1,95 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!DOCTYPE html>
+  <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Registro</title>
-    <link rel="stylesheet" href="../assets/css/Style.css">
-</head>
-<body>
-    <header>    
-        <h1 id="brand">NoLimits</h1>
-    </header>
-    <h2>Ingresa tus datos</h2>
-    <div class="cajita">
-        <div style="text-align: center;">
-            <h2>Nombre</h2>
-            <input class="regD" type="Nombre"id="username" placeholder="Nombre" required>
-            <h2>Apellido</h2>
-            <input class="regD" type="Apellido" id="apellido" placeholder="Apellidos" required>
-            <h2>Correo</h2>
-            <input class="regD" type="correo" id="correo" placeholder="Correo" required>
-            <h2>Contraseña</h2>
-            <input class="regD" type="contraseña"id="contraseña" placeholder="Contraseña"required>
+    <link rel="stylesheet" href="../assets/css/registro.css"/>
+  </head>
+  <body>
+    <!-- NAVBAR fijo, con marca centrada -->
+    <nav class="nl-nav">
+      <div class="nl-nav-inner">
+        <button class="btn_salir" type="button" onclick="location.href='../index.html'"><strong>- Salir al Lobby -</strong></button>
+        <a id="brand" href="#">°-._ NoLimits _.-°</a>
+      </div>
+    </nav>
+
+    <main class="page">
+      <!-- Formulario registro -->
+      <form class="cajita form-grid" action="#" method="post" novalidate>
+        <h2 class="page-title span-2">Ingresa tus datos</h2>
+
+        <!-- Nombre -->
+        <div class="field">
+          <label class="size-field" for="username">Nombre</label>
+          <input class="regD" type="text" id="username" name="nombre"
+                placeholder="Nombre" autocomplete="given-name" required
+                aria-describedby="error-username"/>
+          <small class="error" id="error-username"></small>
         </div>
-    </div>
-    <button onclick="location.href='../html/inicioSesion.html'">Registrarse</button>
-    <button onclick="location.href='../Index.html'">Volver</button>
-</body>
-</html>
+
+        <!-- Apellidos -->
+        <div class="field">
+          <label class="size-field" for="apellido">Apellidos</label>
+          <input class="regD" type="text" id="apellido" name="apellidos"
+                placeholder="Apellidos" autocomplete="family-name" required
+                aria-describedby="error-apellido"/>
+          <small class="error" id="error-apellido"></small>
+        </div>
+
+        <!-- Correo -->
+        <div class="field">
+          <label class="size-field" for="correo">Correo</label>
+          <input class="regD" type="email" id="correo" name="correo"
+                placeholder="Ejemplo: NoLimitsCorp@gmail.com" autocomplete="email" required
+                aria-describedby="error-correo"/>
+          <small class="error" id="error-correo"></small>
+        </div>
+
+        <!-- Teléfono -->
+        <div class="field">
+          <label class="size-field" for="telefono">Teléfono</label>
+          <input class="regD" type="tel" id="telefono" name="telefono"
+                placeholder="+56 9 1234 5678" autocomplete="tel" required
+                aria-describedby="error-telefono"/>
+          <small class="error" id="error-telefono"></small>
+        </div>
+
+        <!-- Contraseña -->
+        <div class="field span-2">
+          <label class="size-field" for="contrasena">Contraseña</label>
+          <input class="regD" type="password" id="contrasena" name="contrasena"
+                placeholder="Contraseña" autocomplete="new-password" minlength="8" required
+                aria-describedby="hint-pass error-contrasena"/>
+          <small class="hint" id="hint-pass">- Mínimo 8 caracteres -</small>
+          <small class="error" id="error-contrasena"></small>
+        </div>
+
+        <!-- Repetir contraseña -->
+        <div class="field span-2">
+          <label class="size-field" for="contrasena2">Repetir Contraseña</label>
+          <input class="regD" type="password" id="contrasena2" name="contrasena2"
+                placeholder="Contraseña" autocomplete="new-password" minlength="8" required
+                aria-describedby="error-contrasena2"/>
+          <small class="error" id="error-contrasena2"></small>
+        </div>
+
+        <!-- Botón -->
+        <div class="actions span-2">
+          <button type="submit" class="btn-primary"><strong>- Registrarse -</strong></button>
+        </div>
+      </form>
+    </main>
+
+    <!-- Barra inferior -->
+    <nav class="nl-nav1">
+      <div class="nl-nav1-inner">
+        <p id="sub-brand">.-°-. All in One .-°-.</p>
+      </div>
+    </nav>
+
+    <!-- Tu JS de registro (muestra errores debajo de cada campo) -->
+    <script src="../assets/js/registro.js" defer></script>
+  </body>
+  </html>

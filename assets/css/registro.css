@@ -1,0 +1,358 @@
+/* ====================== Reset ====================== */
+*,
+*::before,
+*::after{ box-sizing:border-box; }
+
+/* ====================== Variables ====================== */
+:root{
+  /* Colores base */
+  --magenta:#ff4dec;
+  --violet:#7b5cff;
+  --cyan:#00e7ff;
+  --blue:#021d96f2;
+  --white:#e9efff;
+
+  /* Layout */
+  --nav-top:110px;          /* alto de la nav superior */
+  --nav-bottom:70px;        /* alto de la nav inferior */
+}
+
+/* ====================== Fondo / página ====================== */
+html,body{ height:100%; overflow:hidden; }
+
+body{
+  margin:0;
+  display:grid;
+  place-items:center;
+  background:none;
+}
+body::before{
+  content:"";
+  position:fixed; inset:0; z-index:-1;
+  background:
+    linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.35)),
+    url("../img/fondo1.jpg") no-repeat center/cover;
+}
+
+/* ====================== Navbars ====================== */
+.nl-nav,
+.nl-nav1{
+  position:fixed; left:0; width:100%; z-index:1000;
+  background:rgba(0,0,0,.35);
+  backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+  box-shadow:0 6px 18px rgba(0,0,0,.2);
+}
+.nl-nav{ top:0; height:var(--nav-top); border-bottom:1px solid rgba(255,255,255,.1); }
+.nl-nav1{ bottom:0; height:var(--nav-bottom); border-top:1px solid rgba(255,255,255,.1); }
+
+.nl-nav::after{
+  content:""; position:absolute; left:0; right:0; bottom:0; height:1.5px; pointer-events:none;
+  background:linear-gradient(90deg,var(--magenta),var(--cyan),var(--violet));
+  background-size:200% 100%; animation:navline-move 8s linear infinite;
+  box-shadow:0 0 10px rgba(255,77,236,.55), 0 0 14px rgba(0,231,255,.45), 0 0 18px rgba(123,92,255,.45);
+}
+.nl-nav1::after{
+  content:""; position:absolute; left:0; right:0; top:0; height:1.5px; pointer-events:none;
+  background:linear-gradient(90deg,var(--violet),var(--cyan),var(--magenta));
+  background-size:200% 100%; animation:navline-move-right 8s linear infinite;
+  box-shadow:0 0 10px rgba(255,77,236,.55), 0 0 14px rgba(0,231,255,.45), 0 0 18px rgba(123,92,255,.45);
+}
+@keyframes navline-move{ 0%{background-position:0% 0;} 100%{background-position:200% 0;} }
+@keyframes navline-move-right{ 0%{background-position:200% 0;} 100%{background-position:0% 0;} }
+
+/* Contenido de cada nav */
+.nl-nav-inner{
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;  /* izq | centro | der */
+  align-items:center;
+  height:100%;
+  padding:0 20px;
+}
+.nl-nav1-inner{
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;   /* centra el sub-brand */
+  padding:12px 20px;
+}
+
+/* Botón Volver (izquierda) */
+.btn_salir{
+  justify-self:start;
+  display:inline-block;
+  padding:10px 16px;
+  border-radius:10px;
+  background:#000;
+  color:#ff4dec;
+  border:2px double #ff4dec;
+  font-weight:600;
+  cursor:pointer;
+}
+.btn_salir:hover{
+  background:#000; color:#fff;
+    box-shadow:0 0 22px rgba(255,42,191,.55), 
+             0 0 28px rgba(123,92,255,.45), 
+             0 0 34px rgba(0,231,255,.40);
+}
+
+/* ====================== Brand (NoLimits) ====================== */
+/* ===== NoLimits (brand) unificado ===== */
+#brand{
+  /* tipografía + layout inline */
+  font-family: 'Poppins', sans-serif;
+  display: inline-block;
+  line-height: 1;
+  text-decoration: none;
+  user-select: none;
+
+  /* peso y tamaño responsivo */
+  font-weight: 800;
+  font-size: clamp(1rem, 6vw, 4rem);
+
+  /* color base + glow inicial */
+  color: #e4e0e0;
+  -webkit-text-stroke: 0;
+  text-shadow:
+    0 0 12px rgba(0,0,0,.85),
+    0 0 22px rgba(123,92,255,.75),
+    0 0 34px rgba(255,77,236,.65);
+
+  /* pulso suave */
+  animation: nl-pulse 5s ease-in-out infinite;
+
+  /* centrado absoluto (si usas grid/flex en la navbar, puedes quitar estas 3 líneas) */
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+
+  /* transiciones suaves */
+  margin: 0;
+  transition: text-shadow .25s ease, transform .25s ease, filter .25s ease;
+}
+
+/* Hover: más brillo y micro-zoom */
+#brand:hover{
+  filter: brightness(1.12);
+  text-shadow:
+    0 0 5px rgba(255,255,255,.5),
+    0 0 28px rgba(123,92,255,.85),
+    0 0 40px rgba(255,77,236,.75),
+    0 0 30px rgba(0,231,255,.30);
+  transform: translate(-50%, -50%) scale(1.015);
+}
+
+/* Animación de pulso */
+@keyframes nl-pulse{
+  0%, 100% { filter: brightness(1); }
+  50%      { filter: brightness(1.25); }
+}
+
+/* ===== Sub-brand ===== */
+#sub-brand{
+  display:inline-block; line-height:1; text-decoration:none; user-select:none;
+  font-size:clamp(0.8rem,4vw,2rem);
+  background:linear-gradient(90deg,#ff4dec,#00e7ff,#7b5cff);
+  background-size:300% 100%;
+  -webkit-background-clip:text; color:transparent;
+  -webkit-text-stroke:1.5px #a366ff;
+  text-shadow:0 0 2px rgba(111,241,255,.4), 0 0 6px rgba(123,92,255,.25);
+  animation:nl-sheen 8s linear infinite;
+  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+  margin:0; font-weight:500;
+}
+#sub-brand:hover{ -webkit-text-stroke-color:#c28cff; }
+
+/* ====================== Área de contenido ====================== */
+.page{
+  position:fixed;
+  top:var(--nav-top); right:0; bottom:var(--nav-bottom); left:0;
+  display:grid; place-items:center;
+  margin:0;
+  padding:0 16px;           /* respiración lateral */
+}
+
+/* ====================== Card + Form ====================== */
+:root{
+  /* ...tus variables... */
+  --g1:#ff2abf;          /* magenta */
+  --g2:#7b5cff;          /* violeta */
+  --g3:#18e3ff;          /* cian */
+  --pad:3px;             /* grosor del borde “neón” */
+  --glow1: rgba(255,42,191,.45);
+  --glow2: rgba(24,227,255,.40);
+}
+
+.cajita{
+  width:100%;
+  max-width:860px;
+  margin:0 auto;
+  padding:clamp(16px,3vw,28px);
+  background:linear-gradient(180deg, rgba(12,18,35,.78), rgba(10,14,28,.62));
+  border-radius:18px;
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  box-shadow:0 10px 40px rgba(0,0,0,.45);
+  border:0;
+  position: relative;
+  isolation: isolate;                /* aísla los pseudo-elementos */
+  overflow: visible;                 /* deja salir el brillo */
+  box-shadow:
+    0 0 25px rgba(123,92,255,.35),
+    0 0 45px rgba(255,42,191,.25),
+    0 0 65px rgba(24,227,255,.20);
+
+  /* ⬇transición suave del glow */
+  transition: box-shadow .45s cubic-bezier(.22,.61,.36,1), transform .45s ease;
+}
+
+.cajita:hover{
+  box-shadow:
+    0 0 35px rgba(123,92,255,.55),
+    0 0 65px rgba(255,42,191,.45),
+    0 0 85px rgba(24,227,255,.40);
+}
+/* --- ANILLO (se queda igual, si quieres, sólo añadí la línea del translateZ) --- */
+.cajita::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:2;
+  pointer-events:none;
+  padding: var(--pad);
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--g1), var(--g2), var(--g3));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+
+  /* suave base; el brillo potente lo hará ::after */
+  opacity: .95;
+  filter: none;
+  transition: background .28s ease;
+  transform: translateZ(0); /* fuerza composición y evita bugs del mask */
+}
+
+/* (opcional) si quieres un cambio sutil en el color del anillo al hover */
+.cajita:hover::before{
+  background: linear-gradient(90deg, var(--g3), var(--g2), var(--g1));
+}
+
+
+/* Título del card */
+.page-title{
+  grid-column:1 / -1;
+  text-align:center;
+  color:#e9efff;
+  text-shadow:0 0 8px rgba(0,0,0,.6);
+  margin-bottom:20px;
+  font-size:clamp(1rem,3vw,2rem);
+  font-weight:800;
+  letter-spacing:.3px;
+}
+
+/* Grid del formulario */
+.cajita.form-grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(260px, 1fr));
+  column-gap:28px;
+  row-gap:22px;
+  align-items:start;
+  justify-items:stretch;
+}
+.form-grid .span-2{ grid-column:1 / -1; }
+
+/* Campos */
+.field{ margin-bottom:16px; text-align:center; }
+label{ display:block; margin-bottom:6px; color:#c5d3f3; font-size:.95rem; }
+.size-field{ font-size:clamp(14px,1.2vw,18px); font-weight:600; margin-bottom: 1px; }
+
+.regD{
+  width:100%;
+  padding:12px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.06);
+  color:#e9efff;
+  outline:none;
+  text-align: center;
+  margin-top: 8px;
+}
+.regD::placeholder{ color:#bfc7dd; opacity:.75; }
+.regD:focus{
+  border-color:#00e7ff;
+  box-shadow:0 0 0 3px rgba(0,231,255,.15);
+}
+
+/* Hint bajo el input */
+.hint{ display:block; margin-top:6px; color:#c5d3f3; font-size:.90rem; }
+
+/* ====================== Botones ====================== */
+.actions{ display:flex; justify-content:center; gap:12px; margin-top:8px; }
+
+button{
+  display:inline-block; padding:10px 16px; font-size:16px; cursor:pointer;
+  border-radius:10px; border:2px solid purple;
+  transition:background-color .25s, color .25s, border-color .25s, box-shadow .25s;
+}
+
+.btn-primary{
+  border:0; cursor:pointer; font-weight:700; color:#0b1020;
+  background:linear-gradient(90deg,#00e7ff,#7b5cff);
+  border-radius:14px;
+
+  /* tamaño mayor del botón */
+  font-size:clamp(1rem,1.6vw,1.25rem);
+  padding:clamp(14px,1.4vw,18px) clamp(32px,3vw,44px);
+  min-width:clamp(220px,28vw,300px);
+
+  box-shadow:0 10px 30px rgba(123,92,255,.38);
+  transition:transform .18s ease, box-shadow .18s ease;
+  margin-bottom: 10px;
+}
+.btn-primary:hover{
+  transform:translateY(-1px) scale(1.02);
+  box-shadow:0 14px 38px rgba(123,92,255,.45);
+}
+
+.btn-link{
+  display:inline-block;
+  padding:12px 18px;
+  border-radius:12px;
+  color:#e9efff;
+  text-decoration:none;
+  border:1px solid rgba(255,255,255,.22);
+}
+.btn-link:hover{ background:rgba(255,255,255,.06); }
+
+/* ====================== Responsive ====================== */
+@media (max-width:768px){
+  #brand{ font-size:clamp(1.6rem,7vw,3rem); }
+}
+@media (max-width:700px){
+  .cajita.form-grid{ grid-template-columns:1fr; row-gap:16px; column-gap:16px; }
+  .btn-primary{ width:100%; }
+}
+
+.size-field{
+  color: #fcf4f4;
+}
+
+/* ====================== Color errores ====================== */
+
+.field {
+  position: relative;
+}
+
+.error {
+  position: absolute;
+  left: 50%;                  /* centramos horizontal */
+  bottom: -22px;              /* debajo del input */
+  transform: translateX(-50%);/* corrige el centrado */
+  font-size: .75rem;          /* más pequeño */
+  color: #91d7ff;             /* celeste */
+  text-align: center;
+  white-space: nowrap;        /* evita que el texto se parta en varias líneas */
+}
+

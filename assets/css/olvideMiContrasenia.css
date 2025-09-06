@@ -1,0 +1,150 @@
+/* --- Ajustes básicos --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* --- Estilo del body --- */
+body {
+  min-height: 100dvh;
+  background: 
+    linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .55)), /* oscurece para contraste */
+    url("../assets/img/inicio.png") no-repeat center center;
+  background-size: cover;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+
+/* Vars de color/borde */
+:root {
+  --magenta: #ff4dec;
+  --violet: #7b5cff;
+  --cyan: #00e7ff;
+  --g1: var(--magenta);
+  --g2: var(--violet);
+  --g3: var(--cyan);
+  --pad: 3px;                            /* grosor del anillo del section */
+  --avatar: clamp(170px, 22vw, 240px);   /* tamaño del círculo (responsivo) */
+  --ease-smooth: cubic-bezier(.22,.61,.36,1);
+}
+
+/* ===== Caja de iniciar sesión ===== */
+section {
+  position: relative;
+  width: 90%;
+  max-width: 500px;
+  padding: 2rem;
+  border-radius: 1.25rem;
+  background: rgba(0, 0, 0, 0.55); /* efecto glass oscuro */
+  border: 2px solid rgba(255,255,255,0.15);
+  box-shadow: 0 0 25px rgba(0, 0, 0, .55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  text-align: center;
+}
+
+/* Avatar / imagen circular */
+.avatar {
+  width: var(--avatar);
+  height: var(--avatar);
+  border-radius: 50%;
+  object-fit: cover;
+  border: var(--pad) solid transparent;
+  background: linear-gradient(90deg, var(--g1), var(--g2), var(--g3)) border-box;
+  margin: 0 auto 1.5rem auto;
+  display: block;
+}
+
+/* Títulos */
+h1 {
+  text-align: center;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+/* Campos del formulario */
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+}
+
+.field label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.field input {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, .15);
+  color: #fff;
+}
+
+/* Placeholder blanco */
+.field input::placeholder {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Botón */
+button {
+  width: 100%;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 0.75rem;
+  background: linear-gradient(90deg, var(--g1), var(--g2), var(--g3));
+  color: #000000;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s var(--ease-smooth), box-shadow 0.2s var(--ease-smooth);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .35);
+}
+
+/* Mensajes de error */
+.error {
+  font-size: 0.8rem;
+  color: #91d7ff;
+  margin-top: 0.3rem;
+  text-align: center;
+}
+
+.texto-contrasenia{
+    margin-bottom: 20px;
+}
+
+/* Fuerza visibilidad del mensaje de error */
+#errorMsg,
+.error-msg{
+  display:block !important;
+  margin-top:8px !important;
+  font-size:0.9rem !important;
+  color:#a0ecff !important; /* rojo */
+  text-align:center;
+  min-height:1.1em; /* reserva espacio para que no “salte” el layout */
+}
+
+/* Marca el input cuando hay error */
+.input-error{
+  outline:2px solid #67e8ff !important;
+  background: rgba(255, 77, 77, .12) !important;
+}
